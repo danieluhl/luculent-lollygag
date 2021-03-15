@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
-export default function Home() {
+export default function FirstPost() {
   return (
     <div className="container">
       <Head>
@@ -10,6 +11,7 @@ export default function Home() {
 
       <main>
         <h1>This is my page</h1>
+        <Link href="/"><a>Go Home</a></Link>
       </main>
 
       <footer>
