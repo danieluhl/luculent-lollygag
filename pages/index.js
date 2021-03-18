@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Image src="/images/profile.jpeg" width="300px" height="300px" />
+        <Image src="/images/reyan.png" width="300px" height="300px" />
         <h1 className="title">
           Read <Link href="/posts/first-post"><a>This Page</a></Link>
         </h1>
