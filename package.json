@@ -1,5 +1,5 @@
 {
-  "name": "learn-starter",
+  "name": "luculent-lollygag",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "post": "node ./scripts/create-post.js"
   },
   "dependencies": {
-    "classnames": "^2",
+    "classnames": "^2.3.1",
     "date-fns": "^2.21.1",
     "gray-matter": "^4",
     "next": "^10",
