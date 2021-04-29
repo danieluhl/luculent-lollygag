@@ -18,7 +18,7 @@ const today = new Date();
 const date = `${today.getFullYear()}-${`${today.getMonth() + 1}`.padStart(
   2,
   0
-)}-${`${today.getDate() + 1}`.padStart(2, 0)}`;
+)}-${`${today.getDate()}`.padStart(2, 0)}`;
 
 titles.forEach(title => {
   const titleCaseTitle = toTitleCase(title);
