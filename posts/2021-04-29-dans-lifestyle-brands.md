@@ -1,5 +1,5 @@
 ---
-title: 'Dan's Lifestyle Brands'
+title: 'Dans Lifestyle Brands'
 date: '2021-04-29'
 ---
 
