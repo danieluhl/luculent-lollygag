@@ -9,11 +9,10 @@ body {
   font-size: 18px;
 }
 
-body > div:first-child,
+/* body > div:first-child,
 div#__next,
 div#__next > div {
-  height: 100%;
-}
+} */
 
 * {
   box-sizing: border-box;
