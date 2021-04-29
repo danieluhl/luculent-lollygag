@@ -1,5 +1,6 @@
 .outerContainer {
   padding: 3rem 0 6rem;
+  min-height: 100vh;
 }
 
 .container {
