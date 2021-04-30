@@ -7,11 +7,11 @@ date: '2021-04-30'
 
 [Learning a new skill](/posts/2021-04-29-optimal-learning) is one thing. Growing in your career is different.
 
-Imagine an artist, we'll call him Bob, who wakes up each morning and needs to create a masterpiece. But in this bizarre universe Bob is given a completely different medium to work in each day. First Bob needs to complete a painting learning all there is to know about brushes, canvas, and paint. A day later he needs to do a sketch with various sizes of pencils. Next he's forming pottery, then glass blowing, then scuplting with marble.
+Imagine an artist, we'll call him Bob, who wakes up each morning and needs to create a masterpiece. But in this bizarre universe Bob is given a completely different medium to work in each day. First Bob needs to complete a painting learning all there is to know about brushes, canvas, and paint. A day later he needs to do a sketch with various sizes of pencils. Next he's forming pottery, then glass blowing, then sculpting with marble.
 
 Surely one person can spend their entire lives mastering just one of these mediums, so what is Bob going to do to become a master artist when everything is constantly shifting from under him?
 
-The answer is to always look deeper to find the comon pieces and find true growth in the career. Bob must look to understand the core fundamentals: light, shadow, geometry, symmetry, color theory, as well as the typical relative nuances of each medium to know _how_ the fundamentals apply.
+The answer is to always look deeper to find the common pieces and find true growth in the career. Bob must look to understand the core fundamentals: light, shadow, geometry, symmetry, color theory, as well as the typical relative nuances of each medium to know _how_ the fundamentals apply.
 
 Additionally, Bob will want to standardize his approach. He always starts with a simple shape to get his bearings around the new medium. He tests the boundaries and capabilities of his tooling and materials. Then he adapts, building what makes most sense while applying his keep knowledge of form (shape, color, light) to the new context.
 
