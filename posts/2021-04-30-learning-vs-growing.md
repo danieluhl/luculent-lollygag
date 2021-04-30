@@ -39,3 +39,17 @@ Additionally, Bob will want to standardize his approach. He always starts with a
 * Specific systems
 * Specific IDE
 * Specific Libraries or tooling
+
+### Ephemeral
+
+* Libraries in a specific language
+
+### Method
+
+In addition to focusing on core concepts, the master will have a method for continuous learning and an approach to new context. Maybe it's todo app or a simple clock example for learning new web technologies.
+
+## Wrap it up
+
+When we say someone is a "junior" engineer, we don't mean that they have less knowledge about a tool or language, or that they are less capable of learning. What we mean is that they haven't yet developed the habits (behaviors) for approaching new things and/or they haven't developed mastery in the core common elements of software engineering.
+
+Therefore, to "level-up" or "upskill" is not a matter of teaching, for example, typescript. Rather it's a matter of understanging how typescript compares to all other categories of type systems. This is where the misunderstanding of "senior" engineer often comes into play. Because someone can make a website with one specific set of tools, doesn't mean they will be able to do so with changing requirements, tooling, systems, at scale, etc. Mastery at a deep level takes decades, not years, of consistent practice, learning, and habit building.
