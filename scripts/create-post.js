@@ -15,7 +15,8 @@ function toTitleCase(str) {
 }
 
 const today = new Date();
-const date = `${today.getFullYear()}-${`${today.getMonth() + 1}`.padStart(
+const year = today.getFullYear();
+const date = `${`${today.getMonth() + 1}`.padStart(
   2,
   0
 )}-${`${today.getDate()}`.padStart(2, 0)}`;
@@ -25,7 +26,7 @@ titles.forEach(title => {
   const filename = `${date}-${title.split(' ').join('-').toLowerCase()}`;
 
   fs.appendFile(
-    `./posts/${filename}.md`,
+    `./posts/${year}/${filename}.md`,
     `---
 title: '${titleCaseTitle}'
 date: '${date}'
@@ -36,7 +37,7 @@ date: '${date}'
 `,
     err => {
       if (err) throw err;
-      console.log(`${filename}`);
+      console.log(`${year}/${filename}`);
     }
   );
 });

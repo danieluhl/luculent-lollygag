@@ -7,7 +7,7 @@ import Date from "../components/date";
 
 // this runs server side and is for geting the data for this page
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = await getSortedPostsData();
   return {
     props: {
       allPostsData,
@@ -32,7 +32,7 @@ export default function Home({allPostsData}) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({id, date, title}) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />

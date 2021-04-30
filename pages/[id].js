@@ -1,13 +1,13 @@
-import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import Layout from "../components/layout";
+import { getAllPostIds, getPostData } from "../lib/posts";
 import Head from "next/head";
-import Date from "../../components/date";
-import utilStyles from "../../styles/utils.module.css";
+import Date from "../components/date";
+import utilStyles from "../styles/utils.module.css";
 
 // runs only server side at build time to get all possible paths that will
 //  render using this component
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const paths = await getAllPostIds();
   return {
     paths,
     fallback: false,
