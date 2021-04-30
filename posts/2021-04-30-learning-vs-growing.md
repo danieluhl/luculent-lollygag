@@ -5,7 +5,7 @@ date: '2021-04-30'
 
 # Learning Vs Growing
 
-[Learning a new skill](/2021-04-29-optimal-learning) is one thing. Growing in your career is different.
+[Learning a new skill](/posts/2021-04-29-optimal-learning) is one thing. Growing in your career is different.
 
 Imagine an artist, we'll call him Bob, who wakes up each morning and needs to create a masterpiece. But in this bizarre universe Bob is given a completely different medium to work in each day. First Bob needs to complete a painting learning all there is to know about brushes, canvas, and paint. A day later he needs to do a sketch with various sizes of pencils. Next he's forming pottery, then glass blowing, then scuplting with marble.
 
