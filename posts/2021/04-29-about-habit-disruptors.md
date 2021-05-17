@@ -1,10 +1,9 @@
 ---
-title: 'Habit Disruptors'
+title: 'About Habit Disruptors'
 date: '2021-04-29'
 ---
 
-# Habit Disruptors
-
+# About Habit Disruptors
 
 There are a ton of materials on forming habits (trigger, routine, reward) but equally important are habit disruptors. These break up your day and help to get perspective on where your time is going and true value of your activities. We have all kinds of [biases](https://yourbias.is/) that can mess with our perception of value of activity. Its worth regularly double checking our assumptions.
 
