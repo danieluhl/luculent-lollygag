@@ -1,9 +1,9 @@
 ---
-title: 'Object.fromentries Example'
+title: 'Object.fromEntries Example'
 date: '2021-04-29'
 ---
 
-# Object.fromentries Example
+# Object.fromEntries Example
 
 
 Wanted to share a quick code snippet I ran into:
