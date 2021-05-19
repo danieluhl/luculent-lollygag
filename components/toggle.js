@@ -1,21 +1,14 @@
 import styles from './toggle.module.css';
-import {useState} from 'react';
 import classNames from 'classnames';
 
-const ToggleButton = ({onDarkmodeToggle}) => {
-  const [toggle, setToggle] = useState(true);
-
+const ToggleButton = ({ onDarkmodeToggle, isDarkMode }) => {
   const triggerToggle = () => {
-    onDarkmodeToggle(!toggle);
-    setToggle(!toggle);
+    onDarkmodeToggle(!isDarkMode);
   };
 
-  const toggleClasses = classNames(
-    styles.toggle,
-    {
-      [styles.toggleChecked]: toggle
-    }
-  );
+  const toggleClasses = classNames(styles.toggle, {
+    [styles.toggleChecked]: isDarkMode,
+  });
 
   return (
     <div onClick={triggerToggle} className={toggleClasses}>
@@ -30,8 +23,8 @@ const ToggleButton = ({onDarkmodeToggle}) => {
       <div className={styles.toggleCircle}></div>
       <input
         onChange={triggerToggle}
-        type="checkbox"
-        aria-label="Toggle Button"
+        type='checkbox'
+        aria-label='Toggle Button'
         className={styles.toggleInput}
       />
     </div>

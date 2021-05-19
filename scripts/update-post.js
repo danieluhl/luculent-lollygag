@@ -24,12 +24,12 @@ function getDate() {
   return `${year}-${month}-${day}`;
 }
 
-function updateFileDate(path, updated) {
+function updateFileDate(path, updatedDate) {
   const fileContents = fs.readFileSync(path);
   const fileMatter = grayMatter(String(fileContents));
   const data = grayMatter.stringify(fileMatter.content, {
     ...fileMatter.data,
-    updated,
+    updatedDate,
   });
   fs.writeFile(path, data, (err) => {
     if (err) {
@@ -40,8 +40,8 @@ function updateFileDate(path, updated) {
 
 async function main(title) {
   const path = await getPath(title);
-  const updated = getDate();
-  updateFileDate(path, updated);
+  const updatedDate = getDate();
+  updateFileDate(path, updatedDate);
 }
 
 main(argv._[0]);

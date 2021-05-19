@@ -26,6 +26,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
+  const dateString = postData.updatedDate ?? postData.date;
   return (
     <Layout>
       <Head>

@@ -1,7 +1,7 @@
 ---
 title: Habit Disruptors List
 date: '2021-05-17'
-updated: '2021-05-17'
+updatedDate: '2021-05-17'
 ---
 
 # Habit Disruptors List

@@ -1,7 +1,7 @@
 ---
 title: The Mirror Of The Mind
 date: '2021-04-29'
-updated: '2021-05-17'
+updatedDate: '2021-05-17'
 ---
 
 # The Mirror Of The Mind
