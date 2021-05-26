@@ -87,6 +87,6 @@ export default function Layout({ children, home }) {
       </div>
     </div>
   ) : (
-    <div>Loading...</div>
+    <div>FOUC!</div>
   );
 }
