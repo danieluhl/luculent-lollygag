@@ -1,5 +1,5 @@
-const fs = require("fs");
-const argv = require("minimist")(process.argv.slice(2));
+const fs = require('fs');
+const argv = require('minimist')(process.argv.slice(2));
 
 // give one or more titles and this will scaffold out files with title and date
 //  example: node create-post.js "my new blog post"
@@ -23,7 +23,7 @@ const date = `${`${today.getMonth() + 1}`.padStart(
 
 titles.forEach((title) => {
   const titleCaseTitle = toTitleCase(title);
-  const filename = `${date}-${title.split(" ").join("-").toLowerCase()}`;
+  const filename = `${date}-${title.split(' ').join('-').toLowerCase()}`;
 
   fs.appendFile(
     `./posts/${year}/${filename}.md`,
@@ -31,8 +31,6 @@ titles.forEach((title) => {
 title: '${titleCaseTitle}'
 date: '${year}-${date}'
 ---
-
-# ${titleCaseTitle}
 
 `,
     (err) => {
