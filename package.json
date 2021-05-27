@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "post": "node ./scripts/create-post.js",
-    "update": "node ./scripts/update-post.js"
+    "post": "node ./scripts/create-posts.js",
+    "update": "node ./scripts/update-post.js",
+    "draft": "node ./scripts/create-draft.js",
+    "publish-draft": "node ./scripts/publish-draft.js"
   },
   "dependencies": {
     "classnames": "^2.3.1",
