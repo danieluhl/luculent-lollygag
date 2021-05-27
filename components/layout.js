@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { useState, useEffect } from 'react';
 
 const name = 'Luculent Lollygag';
-export const siteTitle = 'Next.js Sample Website';
+export const siteTitle = 'Reyan Blog';
 
 export default function Layout({ children, home }) {
   const [isDarkMode, setIsDarkMode] = useState(null);
