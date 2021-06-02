@@ -1,43 +1,37 @@
 const fs = require('fs');
-const argv = require('minimist')(process.argv.slice(2));
+const yaml = require('yaml');
 
-// give one or more titles and this will scaffold out files with title and date
-//  example: node create-post.js "my new blog post"
-//   creates 2021-04-29-my-new-blog-post.md with initial content
+// read the latest id from the draft-conf.yml
+// create the file with initial data
 
-const titles = argv._;
+const DRAFTS_CONF_PATH = 'drafts/draft-conf.yml';
 
-function toTitleCase(str) {
-  return str.replace(
-    /\w\S*/g,
-    txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+let draftId;
+
+try {
+  // read draft conf
+  const conf = yaml.parse(fs.readFileSync(DRAFTS_CONF_PATH, 'utf8'));
+  draftId = conf.latestId + 1;
+  // update draft conf id
+  fs.writeFileSync(
+    DRAFTS_CONF_PATH,
+    yaml.stringify({ ...conf, latestId: draftId })
   );
+} catch (e) {
+  console.log(e);
 }
 
-const today = new Date();
-const year = today.getFullYear();
-const date = `${`${today.getMonth() + 1}`.padStart(
-  2,
-  0
-)}-${`${today.getDate()}`.padStart(2, 0)}`;
+const filename = `draft-${draftId}`;
 
-titles.forEach(title => {
-  const titleCaseTitle = toTitleCase(title);
-  const filename = `${date}-${title.split(' ').join('-').toLowerCase()}`;
-
-  fs.appendFile(
-    `./posts/drafts/${filename}.md`,
-    `---
-title: '${titleCaseTitle}'
-date: '${year}-${date}'
+fs.appendFile(
+  `./drafts/${filename}.md`,
+  `---
+title: 'placeholder'
 ---
 
-# ${titleCaseTitle}
-
 `,
-    err => {
-      if (err) throw err;
-      console.log(`${year}/${filename}`);
-    }
-  );
-});
+  (err) => {
+    if (err) throw err;
+    console.log(`Created Draft - ${filename}`);
+  }
+);
