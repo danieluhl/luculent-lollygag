@@ -50,3 +50,16 @@
 .lightText {
   color: rgba(76, 94, 201, 0.6);
 }
+
+.tag {
+  border: 1px solid rgba(76, 94, 201, 0.6);
+  border-radius: 4px;
+  margin: 2px 4px;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+a.tag:hover {
+  text-decoration: none;
+  background: rgba(61, 61, 90, 0.1);
+}
