@@ -3,8 +3,6 @@ title: 'Learning From Shoveling The Yard'
 date: '2021-04-29'
 ---
 
-# Learning From Shoveling The Yard
-
 # Shoveling Sucks
 
 Living in the northeast shoveling driveways is a known pain. This year I got a small electric snowblower which helped a bit but it's always been a chore. My back aches after, it's cold and wet and often early in the morning so we can get the car out for the day.
