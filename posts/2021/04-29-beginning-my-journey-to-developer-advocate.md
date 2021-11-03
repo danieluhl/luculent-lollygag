@@ -3,9 +3,6 @@ title: 'Beginning My Journey To Developer Advocate'
 date: '2021-04-29'
 ---
 
-# Beginning My Journey To Developer Advocate
-
-
 # What is my job?
 
 For a long while now I've been unsure of what my job is. This should sound alarming to any manager or CEO, but I've always had good reviews and continue to get promoted so I know I'm doing something valuable. But it's not coding, coaching, or managing. Sure, I can do all those things, but I find I have a desire that's quite unique that drives my core activity through priority.

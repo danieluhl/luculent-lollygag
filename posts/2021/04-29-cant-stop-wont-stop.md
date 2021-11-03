@@ -3,8 +3,6 @@ title: 'Cant Stop, Wont Stop'
 date: '2021-04-29'
 ---
 
-# Can't Stop, Won't Stop
-
 # Friday Nights
 
 On typical Fridays, I would often go hang out at bars with friends, celebrate weekly wins, and was overjoyed for the weekend.

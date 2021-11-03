@@ -3,9 +3,6 @@ title: 'The Value Of Attention'
 date: '2021-04-29'
 ---
 
-# The Value Of Attention
-
-
 # You Won the Lottery!
 
 Each day we win the attention lottery. We're each gifted with 24 glorious hours to spend our attention how we choose. This conscious attention, I would argue, is the most valuable currency in the known universe. What an amazing gift!

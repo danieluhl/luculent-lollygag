@@ -2,10 +2,6 @@
 title: 'Secondary Emotions In Software'
 date: '2021-04-29'
 ---
-
-# Secondary Emotions In Software
-
-
 # What are secondary emotions?
 
 Secondary emotions are the judgements of primary emotions. For example, I'm afraid I'll lose control when I get angry. Anger is the primary emotion and fear is the secondary emotion.

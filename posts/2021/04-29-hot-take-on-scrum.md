@@ -3,8 +3,6 @@ title: 'Hot Take On Scrum'
 date: '2021-04-29'
 ---
 
-# Hot Take On Scrum
-
 
 # Aptitude and Attitude
 
