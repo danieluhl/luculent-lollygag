@@ -19,5 +19,5 @@ Built using the starter template for [Learn Next.js](https://nextjs.org/learn).
 
 - `yarn post "my new post"` creates a new file in the appropriate date format in the `/posts` directory
 - `yarn draft` creates a new draft file in the `/drafts` directory.
-- `yarn pubish 123` moves and renames the draft with `id` 123 to the `/posts` directory using the frontematter title as the post name
+- `yarn pubish-draft 123` moves and renames the draft with `id` 123 to the `/posts` directory using the frontematter title as the post name
 - `yarn update "my existing post"` updates the date on an existing post
