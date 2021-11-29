@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Layout, {siteTitle} from '../components/layout';
+import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import {getSortedPostsData} from '../lib/posts';
+import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-import {useCallback, useState} from 'react';
+import { useCallback, useState } from 'react';
 
 // this runs server side and is for geting the data for this page
 export async function getStaticProps() {
@@ -16,10 +16,10 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({allPostsData}) {
+export default function Home({ allPostsData }) {
   const [tag, setTag] = useState('');
   const tagFilterCallback = useCallback(
-    e => {
+    (e) => {
       debugger;
       console.log(e);
       setTag(tag);
@@ -41,18 +41,18 @@ export default function Home({allPostsData}) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Archives</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({id, date, title, tags}) => (
+          {allPostsData.map(({ id, date, title, tags }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={date} />
+                <Date dateString={date} title={title} />
               </small>
               {tags && <br />}
               {tags &&
-                tags.map(tag => (
+                tags.map((tag) => (
                   <small>
                     <a
                       key={tag}
