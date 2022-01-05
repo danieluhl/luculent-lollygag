@@ -8,7 +8,7 @@ A PM recently showed a graph that looks roughly like this:
 
 ![value-effort](_next/image?url=%2Fimages%2Fpost-images%2Fvalue-effort.png&w=640&q=75)
 
-This works for engineers and teams which are maintaining existing software or implemeting existing solutions. In other words, areas where software needs to be bulit and maintained without innovation or customer feedback.
+This works for engineers and teams which are maintaining existing software or implementing existing solutions. In other words, areas where software needs to be built and maintained without innovation or customer feedback.
 
 But when building and innovating on a _product_ I think this misses the point. We rarely know the value _or_ effort, making this graph instantly obsolete. Additionally, when we make OKRs that pre-determine _what_ we're going to build, we remove responsibility, accountability, and let's be honest, life fulfillment from the people actually doing the work (vs planning the work).
 
