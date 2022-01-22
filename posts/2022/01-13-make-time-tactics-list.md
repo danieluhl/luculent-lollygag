@@ -1,9 +1,14 @@
 ---
-title: 'Make Time Tactics List'
+title: Make Time Tactics List
 date: '2022-01-13'
+updatedDate: '2022-01-22'
 ---
 
-Based on the excellent book [Make Time](https://maketime.blog/)
+A good quote that sums up my position on the book [Make Time](https://maketime.blog/):
+
+> "Do not seek to follow in the footsteps of the wise, instead, seek what they sought." - Matsuo Basho
+
+The book is great and I agree with most of it, but it's too light on the core point - each person needs to self experiment and practice regular deep reflection to really understand what works.
 
 ## Highlight
 - Give equal thought to what's getting dropped to give time and importance to the top thing
