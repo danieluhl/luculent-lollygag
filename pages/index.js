@@ -17,16 +17,15 @@ export async function getStaticProps() {
 }
 
 export default function Home({allPostsData}) {
-  const [tag, setTag] = useState('');
+  const [selectedTag, setSelectedTag] = useState('');
   let postsDataFiltered = [...allPostsData];
   const makeTagFilterCallback = (tag) => () => {
-    setTag(tag);
+    setSelectedTag(tag === selectedTag ? '' : tag);
   };
 
-  // todo: add clear tags button
-  if (tag !== '') {
+  if (selectedTag !== '') {
     postsDataFiltered = allPostsData.filter((item) => {
-      return item.tags && item.tags.includes(tag);
+      return item.tags && item.tags.includes(selectedTag);
     });
   }
 
@@ -60,7 +59,9 @@ export default function Home({allPostsData}) {
                   {tags.map((tag) => (
                     <small key={tag}>
                       <a
-                        className={`${utilStyles.tag} ${utilStyles.lightText}`}
+                        className={`${
+                          tag === selectedTag ? utilStyles.selectedTag : ''
+                        } ${utilStyles.tag} ${utilStyles.lightText}`}
                         onClick={makeTagFilterCallback(tag)}
                         data-value={tag}
                       >
