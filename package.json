@@ -13,6 +13,7 @@
     "publish-draft": "node ./scripts/publish-draft.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.30.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.21.1",
     "fast-glob": "^3.2.5",

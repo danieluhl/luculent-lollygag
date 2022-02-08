@@ -59,6 +59,11 @@
   cursor: pointer;
 }
 
+.selectedTag {
+  background: rgba(76, 94, 201, 0.3);
+  border: 1px solid rgba(76, 94, 201, 0.9);
+}
+
 a.tag:hover {
   text-decoration: none;
   background: rgba(61, 61, 90, 0.1);

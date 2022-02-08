@@ -4,11 +4,16 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-import { useCallback, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getAllPageViews } from '../lib/pageData';
 
-// this runs server side and is for geting the data for this page
+// this runs server side and is for getting the data for this page
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
+  const pageViewsData = await getAllPageViews();
+  allPostsData.forEach((post) => {
+    post.viewCount = pageViewsData[post.title] ?? 0;
+  });
   return {
     props: {
       allPostsData,
@@ -17,15 +22,21 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-  const [tag, setTag] = useState('');
-  const tagFilterCallback = useCallback(
-    (e) => {
-      debugger;
-      console.log(e);
-      setTag(tag);
-    },
-    [tag]
-  );
+  const [selectedTag, setSelectedTag] = useState('');
+  const [pageViewsData, setPageViewsData] = useState(null);
+
+  let postsDataFiltered = [...allPostsData];
+
+  const makeTagFilterCallback = (tag) => () => {
+    setSelectedTag(tag === selectedTag ? '' : tag);
+  };
+
+  if (selectedTag !== '') {
+    postsDataFiltered = allPostsData.filter((item) => {
+      return item.tags && item.tags.includes(selectedTag);
+    });
+  }
+
   return (
     <Layout home>
       <Head>
@@ -41,7 +52,7 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Archives</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title, tags }) => (
+          {postsDataFiltered.map(({ id, date, title, tags, viewCount = 0 }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/${id}`}>
                 <a>{title}</a>
@@ -49,21 +60,26 @@ export default function Home({ allPostsData }) {
               <br />
               <small className={utilStyles.lightText}>
                 <Date dateString={date} title={title} />
+                {viewCount > 0 ? `, views: ${viewCount} ` : ''}
               </small>
-              {tags && <br />}
-              {tags &&
-                tags.map((tag) => (
-                  <small>
-                    <a
-                      key={tag}
-                      className={`${utilStyles.tag} ${utilStyles.lightText}`}
-                      onClick={tagFilterCallback}
-                      data-value={tag}
-                    >
-                      {tag}
-                    </a>
-                  </small>
-                ))}
+              {tags && (
+                <>
+                  <br />
+                  {tags.map((tag) => (
+                    <small key={tag}>
+                      <a
+                        className={`${
+                          tag === selectedTag ? utilStyles.selectedTag : ''
+                        } ${utilStyles.tag} ${utilStyles.lightText}`}
+                        onClick={makeTagFilterCallback(tag)}
+                        data-value={tag}
+                      >
+                        {tag}
+                      </a>
+                    </small>
+                  ))}
+                </>
+              )}
             </li>
           ))}
         </ul>
