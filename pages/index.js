@@ -1,14 +1,19 @@
 import Head from 'next/head';
-import Layout, {siteTitle} from '../components/layout';
+import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import {getSortedPostsData} from '../lib/posts';
+import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-import {useCallback, useState} from 'react';
+import { useState, useEffect } from 'react';
+import { getAllPageViews } from '../lib/pageData';
 
 // this runs server side and is for getting the data for this page
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
+  const pageViewsData = await getAllPageViews();
+  allPostsData.forEach((post) => {
+    post.viewCount = pageViewsData[post.title] ?? 0;
+  });
   return {
     props: {
       allPostsData,
@@ -16,9 +21,12 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({allPostsData}) {
+export default function Home({ allPostsData }) {
   const [selectedTag, setSelectedTag] = useState('');
+  const [pageViewsData, setPageViewsData] = useState(null);
+
   let postsDataFiltered = [...allPostsData];
+
   const makeTagFilterCallback = (tag) => () => {
     setSelectedTag(tag === selectedTag ? '' : tag);
   };
@@ -44,7 +52,7 @@ export default function Home({allPostsData}) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Archives</h2>
         <ul className={utilStyles.list}>
-          {postsDataFiltered.map(({id, date, title, tags}) => (
+          {postsDataFiltered.map(({ id, date, title, tags, viewCount = 0 }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/${id}`}>
                 <a>{title}</a>
@@ -52,6 +60,7 @@ export default function Home({allPostsData}) {
               <br />
               <small className={utilStyles.lightText}>
                 <Date dateString={date} title={title} />
+                {viewCount > 0 ? `, views: ${viewCount} ` : ''}
               </small>
               {tags && (
                 <>
