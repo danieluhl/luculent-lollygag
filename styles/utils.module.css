@@ -51,6 +51,12 @@
   color: rgba(76, 94, 201, 0.6);
 }
 
+.greyLightText {
+  color: rgba(76, 94, 201, 0.2);
+  filter: grayscale(100%);
+  margin: 0 4px 0 12px;
+}
+
 .tag {
   border: 1px solid rgba(76, 94, 201, 0.6);
   border-radius: 4px;

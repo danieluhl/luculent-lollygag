@@ -5,7 +5,7 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { useState, useEffect } from 'react';
-import { getAllPageViews } from '../lib/pageData';
+import { getPageExtraData } from '../lib/pageData';
 
 // this runs server side and is for getting the data for this page
 export async function getStaticProps() {
@@ -55,9 +55,16 @@ export default function Home({ allPostsData }) {
   }
 
   useEffect(async () => {
-    const allPageViewsData = await getAllPageViews();
+    const allPageViewsData = await getPageExtraData();
     postsDataFiltered.forEach((post) => {
-      post.views = allPageViewsData[post.id] || 0;
+      let views = 0;
+      let likes = 0;
+      if (allPageViewsData[post.id]) {
+        views = allPageViewsData[post.id].views;
+        likes = allPageViewsData[post.id].likes;
+      }
+      post.views = views;
+      post.likes = likes;
     });
 
     setAllPostsSorted(postsDataFiltered);
@@ -99,7 +106,7 @@ export default function Home({ allPostsData }) {
               ))}
             </div>
             <ul className={utilStyles.list}>
-              {allPostsSorted.map(({ id, date, title, tags, views }) => (
+              {allPostsSorted.map(({ id, date, title, tags, views, likes }) => (
                 <li className={utilStyles.listItem} key={id}>
                   <Link href={`/${id}`}>
                     <a>{title}</a>
@@ -107,7 +114,18 @@ export default function Home({ allPostsData }) {
                   <br />
                   <small className={utilStyles.lightText}>
                     <Date dateString={date} title={title} />
-                    {views > 0 ? `, views: ${views} ` : ''}
+                    {views > 5 && (
+                      <>
+                        <small className={utilStyles.greyLightText}>👀</small>
+                        {views}
+                      </>
+                    )}
+                    {likes > 5 && (
+                      <>
+                        <small className={utilStyles.greyLightText}>👍</small>
+                        {likes}
+                      </>
+                    )}
                   </small>
                   {tags && (
                     <>
