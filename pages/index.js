@@ -10,10 +10,6 @@ import { getAllPageViews } from '../lib/pageData';
 // this runs server side and is for getting the data for this page
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
-  const pageViewsData = await getAllPageViews();
-  allPostsData.forEach((post) => {
-    post.viewCount = pageViewsData[post.title] ?? 0;
-  });
   return {
     props: {
       allPostsData,
@@ -21,9 +17,30 @@ export async function getStaticProps() {
   };
 }
 
+const TABS = {
+  LATEST: 'Latest',
+  VIEWS: 'Views',
+  LIKES: 'Likes',
+};
+
+const SORT = {
+  [TABS.VIEWS](a, b) {
+    return b.views - a.views;
+  },
+  [TABS.LIKES](a, b) {
+    return b.likes - a.likes;
+  },
+  [TABS.LATEST](a, b) {
+    const compareDateA = a.updatedDate ?? a.date;
+    const compareDateB = b.updatedDate ?? b.date;
+    return compareDateA < compareDateB ? 1 : -1;
+  },
+};
+
 export default function Home({ allPostsData }) {
   const [selectedTag, setSelectedTag] = useState('');
-  const [pageViewsData, setPageViewsData] = useState(null);
+  const [allPostsSorted, setAllPostsSorted] = useState([]);
+  const [activeTab, setActiveTab] = useState(TABS.LATEST);
 
   let postsDataFiltered = [...allPostsData];
 
@@ -37,53 +54,85 @@ export default function Home({ allPostsData }) {
     });
   }
 
+  useEffect(async () => {
+    const allPageViewsData = await getAllPageViews();
+    postsDataFiltered.forEach((post) => {
+      post.views = allPageViewsData[post.id] || 0;
+    });
+
+    setAllPostsSorted(postsDataFiltered);
+  }, []);
+
+  const onHeadingClick = (activeTab) => () => {
+    setActiveTab(activeTab);
+    setAllPostsSorted(postsDataFiltered.sort(SORT[activeTab]));
+  };
+
   return (
     <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>
-          Here you'll find thoughts on JavaScript development, management, stoic
-          philosophy as well as some ongoing lists like things I like and habits
-          I'm currently making and breaking.
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Archives</h2>
-        <ul className={utilStyles.list}>
-          {postsDataFiltered.map(({ id, date, title, tags, viewCount = 0 }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} title={title} />
-                {viewCount > 0 ? `, views: ${viewCount} ` : ''}
-              </small>
-              {tags && (
-                <>
+      {({ theme }) => (
+        <>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
+          <section className={utilStyles.headingMd}>
+            <p>
+              Here you'll find thoughts on JavaScript development, management,
+              stoic philosophy as well as some ongoing lists like things I like
+              and habits I'm currently making and breaking.
+            </p>
+          </section>
+          <section
+            className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}
+          >
+            <div className={utilStyles.headings}>
+              {Object.values(TABS).map((tab) => (
+                <h2
+                  key={tab}
+                  className={`${utilStyles.headingLg} ${theme.tabHeading} ${
+                    activeTab === tab ? theme.activeTabHeading : ''
+                  }`}
+                  onClick={onHeadingClick(tab)}
+                >
+                  {tab}
+                </h2>
+              ))}
+            </div>
+            <ul className={utilStyles.list}>
+              {allPostsSorted.map(({ id, date, title, tags, views }) => (
+                <li className={utilStyles.listItem} key={id}>
+                  <Link href={`/${id}`}>
+                    <a>{title}</a>
+                  </Link>
                   <br />
-                  {tags.map((tag) => (
-                    <small key={tag}>
-                      <a
-                        className={`${
-                          tag === selectedTag ? utilStyles.selectedTag : ''
-                        } ${utilStyles.tag} ${utilStyles.lightText}`}
-                        onClick={makeTagFilterCallback(tag)}
-                        data-value={tag}
-                      >
-                        {tag}
-                      </a>
-                    </small>
-                  ))}
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
+                  <small className={utilStyles.lightText}>
+                    <Date dateString={date} title={title} />
+                    {views > 0 ? `, views: ${views} ` : ''}
+                  </small>
+                  {tags && (
+                    <>
+                      <br />
+                      {tags.map((tag) => (
+                        <small key={tag}>
+                          <a
+                            className={`${
+                              tag === selectedTag ? utilStyles.selectedTag : ''
+                            } ${utilStyles.tag} ${utilStyles.lightText}`}
+                            onClick={makeTagFilterCallback(tag)}
+                            data-value={tag}
+                          >
+                            {tag}
+                          </a>
+                        </small>
+                      ))}
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
+      )}
     </Layout>
   );
 }

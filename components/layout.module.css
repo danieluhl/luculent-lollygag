@@ -18,17 +18,3 @@
 .backToHome {
   margin: 3rem 0 0;
 }
-
-.darkMode {
-  background: #011627;
-  color: #d6deeb;
-}
-
-.darkMode a {
-  color: #449ce4;
-  text-decoration: none;
-}
-
-.darkMode a:hover {
-  text-decoration: underline;
-}

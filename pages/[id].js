@@ -3,11 +3,11 @@ import { getAllPostIds, getPostData } from '../lib/posts';
 import Head from 'next/head';
 import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
-import { supabase } from '../lib/initSupabase';
+import { updatePageViews } from '../lib/pageData';
 import { useEffect } from 'react';
 
 // runs only server side at build time to get all possible paths that will
-//  render using this component
+//  render using this component, this generates all the routes
 export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
@@ -30,30 +30,25 @@ export async function getStaticProps({ params }) {
 export default function Post({ postData }) {
   // on page load, log the page view
   useEffect(() => {
-    logPageView();
+    updatePageViews(postData.id);
   }, []);
-
-  const logPageView = async () => {
-    let { data: view, error } = await supabase.from('page_views').insert({
-      page_name: postData.title
-    });
-    if(error) {
-      console.error(error);
-    }
-  }
 
   return (
     <Layout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
+      {() => (
+        <>
+          <Head>
+            <title>{postData.title}</title>
+          </Head>
+          <article>
+            <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+            <div className={utilStyles.lightText}>
+              <Date dateString={postData.date} />
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          </article>
+        </>
+      )}
     </Layout>
   );
 }
