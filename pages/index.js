@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
-import { useCallback, useState } from 'react';
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import { getSortedPostsData } from "../lib/posts";
+import Link from "next/link";
+import Date from "../components/date";
+import { useCallback, useState } from "react";
 
 // this runs server side and is for geting the data for this page
 export async function getStaticProps() {
@@ -17,7 +17,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-  const [tag, setTag] = useState('');
+  const [tag, setTag] = useState("");
   const tagFilterCallback = useCallback(
     (e) => {
       debugger;
@@ -37,6 +37,7 @@ export default function Home({ allPostsData }) {
           philosophy as well as some ongoing lists like things I like and habits
           I'm currently making and breaking.
         </p>
+        <p>I also co-host <a href="https://anchor.fm/dashboard">a podcast</a> with the great Raphael Rafatpanah about all things programming.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Archives</h2>
@@ -53,7 +54,7 @@ export default function Home({ allPostsData }) {
               {tags && <br />}
               {tags &&
                 tags.map((tag) => (
-                  <small>
+                  <small key={tag}>
                     <a
                       key={tag}
                       className={`${utilStyles.tag} ${utilStyles.lightText}`}

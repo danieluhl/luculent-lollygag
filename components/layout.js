@@ -1,27 +1,30 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
-import Toggle from './toggle';
-import classNames from 'classnames';
-import { useState, useEffect } from 'react';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "./layout.module.css";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import Toggle from "./toggle";
+import classNames from "classnames";
+import { useState, useEffect } from "react";
 
-const name = 'Luculent Lollygag';
-export const siteTitle = 'Reyan Blog';
+const name = "Luculent Lollygag";
+export const siteTitle = "Reyan Blog";
 
 export default function Layout({ children, home }) {
   const [isDarkMode, setIsDarkMode] = useState(null);
   const toggleDarkmode = () => {
     setIsDarkMode(!isDarkMode);
-    window.localStorage.setItem('isDarkTheme', !isDarkMode);
+    window.localStorage.setItem("isDarkTheme", !isDarkMode);
   };
 
   useEffect(() => {
     // check local storage to initialize state
-    const savedIsDarkMode =
-      window.localStorage.getItem('isDarkTheme') !== 'false';
-    setIsDarkMode(savedIsDarkMode);
+    const savedIsDarkMode = window.localStorage.getItem("isDarkTheme");
+    const isDarkMode =
+      savedIsDarkMode != null
+        ? savedIsDarkMode === "true"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDarkMode(isDarkMode);
   }, []);
 
   const themeClassNames = classNames(styles.outerContainer, {
@@ -32,12 +35,12 @@ export default function Layout({ children, home }) {
     <div className={themeClassNames}>
       <div className={styles.container}>
         <Head>
-          <link rel='icon' href='/favicon.ico' />
+          <link rel="icon" href="/favicon.ico" />
           <meta
-            name='description'
-            content='Blog about software engineering, management, and other interesting thoughts'
+            name="description"
+            content="Blog about software engineering, management, and other interesting thoughts"
           />
-          <meta name='og:title' content={siteTitle} />
+          <meta name="og:title" content={siteTitle} />
         </Head>
         <Toggle onDarkmodeToggle={toggleDarkmode} isDarkMode={isDarkMode} />
         <header className={styles.header}>
@@ -45,7 +48,7 @@ export default function Layout({ children, home }) {
             <>
               <Image
                 priority
-                src='/images/flowers.jpg'
+                src="/images/flowers.jpg"
                 className={utilStyles.borderCircle}
                 height={300}
                 width={300}
@@ -56,11 +59,11 @@ export default function Layout({ children, home }) {
             </>
           ) : (
             <>
-              <Link href='/'>
+              <Link href="/">
                 <a>
                   <Image
                     priority
-                    src='/images/scene.jpeg'
+                    src="/images/scene.jpeg"
                     className={utilStyles.borderCircle}
                     height={108}
                     width={108}
@@ -69,7 +72,7 @@ export default function Layout({ children, home }) {
                 </a>
               </Link>
               <h2 className={utilStyles.headingLg}>
-                <Link href='/'>
+                <Link href="/">
                   <a className={utilStyles.colorInherit}>{name}</a>
                 </Link>
               </h2>
@@ -79,7 +82,7 @@ export default function Layout({ children, home }) {
         <main>{children}</main>
         {!home && (
           <div className={styles.backToHome}>
-            <Link href='/'>
+            <Link href="/">
               <a>← Back to home</a>
             </Link>
           </div>

@@ -16,7 +16,7 @@ Another analogy that might resonate well with engineers is immutable data struct
 
 # Examples of Good Process
 
-One example of speeding up and scaling work is agile methodologies. Fundamentally understanding where the team and company are headed and how we're planning to get there is like paving a path to drive down. The ability to easily create work, get it prioritized, and work on the top priority thing brings a team together and streamlines efforts.
+One example of possibly speeding up and scaling work is agile methodologies. Fundamentally understanding where the team and company are headed and how we're planning to get there is like paving a path to drive down. The ability to easily create work, get it prioritized, and work on the top priority thing brings a team together and streamlines efforts.
 
 Processes like project proposal, RFCs, architecture reviews, and testing norms are your guard rails. These prevent an entire class of "team bugs" like bus factor, hero culture, and code debt over time.
 
@@ -29,8 +29,6 @@ To identify bad process it often helps to reflect on _why_ the process exists:
 * "We've always done it this way"
 * "That team is doing it, so should we"
 * "I read a book and so we're doing this now"
-
-I say above that agile is an example of good practice, this may not be true for all teams.
 
 Going back to our driving analogy, if you're in an off-roading vehicle and your destination is a mile off the road, then roads and guardrails are actively hindering you from reaching your goal.
 
