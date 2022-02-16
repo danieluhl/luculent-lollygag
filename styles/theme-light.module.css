@@ -1,0 +1,29 @@
+.themeWrapper a {
+  color: #449ce4;
+  text-decoration: none;
+}
+
+.themeWrapper a:hover {
+  text-decoration: underline;
+}
+
+.themeWrapper {
+  color: #011627;
+  background: #fff;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.themeWrapper .tabHeading {
+  color: rgba(76, 94, 201, 0.6);
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.themeWrapper .activeTabHeading {
+  color: #011627;
+  cursor: default;
+}

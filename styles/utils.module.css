@@ -51,6 +51,12 @@
   color: rgba(76, 94, 201, 0.6);
 }
 
+.greyLightText {
+  color: rgba(76, 94, 201, 0.2);
+  filter: grayscale(100%);
+  margin: 0 4px 0 12px;
+}
+
 .tag {
   border: 1px solid rgba(76, 94, 201, 0.6);
   border-radius: 4px;
@@ -59,7 +65,21 @@
   cursor: pointer;
 }
 
+.selectedTag {
+  background: rgba(76, 94, 201, 0.3);
+  border: 1px solid rgba(76, 94, 201, 0.9);
+}
+
 a.tag:hover {
   text-decoration: none;
   background: rgba(61, 61, 90, 0.1);
+}
+
+.headings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
 }

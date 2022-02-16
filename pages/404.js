@@ -6,12 +6,16 @@ import Link from 'next/link';
 export default function ErrorPage() {
   return (
     <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Invalid URL, double check that linky!</p>
-      </section>
+      {() => (
+        <>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
+          <section className={utilStyles.headingMd}>
+            <p>Invalid URL, double check that linky!</p>
+          </section>
+        </>
+      )}
     </Layout>
   );
 }
