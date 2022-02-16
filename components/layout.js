@@ -8,8 +8,8 @@ import Link from 'next/link';
 import Toggle from './toggle';
 import { useState, useEffect } from 'react';
 
-const name = 'Luculent Lollygag';
-export const siteTitle = 'Reyan Blog';
+const name = "Luculent Lollygag";
+export const siteTitle = "Reyan Blog";
 
 const THEMES = {
   DARK: 'dark',

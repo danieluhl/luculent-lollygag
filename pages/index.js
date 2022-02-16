@@ -88,6 +88,10 @@ export default function Home({ allPostsData }) {
               stoic philosophy as well as some ongoing lists like things I like
               and habits I'm currently making and breaking.
             </p>
+            <p>
+              I also co-host <a href="https://anchor.fm/dashboard">a podcast</a>{' '}
+              with the great Raphael Rafatpanah about all things programming.
+            </p>
           </section>
           <section
             className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}

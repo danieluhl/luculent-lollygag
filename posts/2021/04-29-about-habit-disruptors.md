@@ -3,20 +3,18 @@ title: 'About Habit Disruptors'
 date: '2021-04-29'
 ---
 
-# About Habit Disruptors
-
-There are a ton of materials on forming habits (trigger, routine, reward) but equally important are habit disruptors. These break up your day and help to get perspective on where your time is going and true value of your activities. We have all kinds of [biases](https://yourbias.is/) that can mess with our perception of value of activity. Its worth regularly double checking our assumptions.
+There are a ton of materials on forming habits (trigger, routine, reward) but equally important are habit disruptors. These break up your day and help to get perspective on where your time is going and true value of your activities. We have many [biases](https://yourbias.is/) that can color our perception.
 
 ## Pick a Habit
 
-Habit disruptors are usually simply stopping some activity. I like to stop something for a week. Here are some good examples:
+A good first start would be to stop something for a week. Here are some good examples. Pick one, reflect, and repeat!
 
 * No phone
 * No meat
 * No alcohol (this one is good to plan quarterly)
 * No coffee
 * No sugar
-* No TV
+* No TV/Youtube
 * No after hours coding up
 * No videogames
 
@@ -26,7 +24,9 @@ Stopping something can be very difficult but there are a few tricks to help you 
 
 ### Plan the week
 
-Going without a phone for a week can be a challenge. If you'll need GPS direction you may need to map things out before you go. You may need to check your calendar on your computer more often to avoid missing meetings. If you're going without meat or other consumable, you'll need to buy more of other foods for the week.
+Going without a phone for a week can be a challenge. If you'll need GPS direction you may need to map things out before you go (hello mapquest!) You may need to use your computer more often for calendar, email, chat, etc.
+
+If you're going without meat or other consumable, you'll need to buy more of other foods for the week.
 
 ### Remove temptation
 
