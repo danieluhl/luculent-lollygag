@@ -1,5 +1,6 @@
 ---
-title: 'Putting the Dishes Away' date: '2022-02-14'
+title: 'Putting the Dishes Away'
+date: '2022-02-14'
 ---
 
 1. Remove blockers, prove viability
