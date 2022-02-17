@@ -3,9 +3,6 @@ title: 'File Search Tool'
 date: '2021-04-29'
 ---
 
-# File Search Tool
-
-
 I ran into a deep babel issue where file output was a problem under a specific set of circumstances: the module was AMD and it included a class that extends `React.Component`. I didn't know how pervasive the problem was in the codebase I was working in which a quick
 
 `find . -type f | wc -l`

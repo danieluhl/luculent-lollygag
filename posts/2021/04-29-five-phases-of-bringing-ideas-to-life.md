@@ -23,7 +23,7 @@ If you still think your idea holds strong as a solution or replacement to a solu
 
 ## Phase 2: Sell sell sell
 
-Buy-in is important. Surprising everyone with your idea or change in a large meeting is quite possibly the worst thing you can do. Insead let the idea sit with key stakeholders and get feedback on all the ways it could fail, not work, or is simply a bad idea. Meeting 1:1 is best. Embrace negativity with open arms as challenges to solve on the way to fulfilling your purpose (see above).
+Buy-in is important. Surprising everyone with your idea or change in a large meeting is quite possibly the worst thing you can do. Instead, let the idea sit with key stakeholders and get feedback on all the ways it could fail, not work, or is simply a bad idea. Meeting 1:1 is best. Speak in their terms and focus on their needs - fix a problem that's relevant for them now. Embrace negativity with open arms as challenges to solve on the way to fulfilling your purpose (see above).
 
 Here are some questions to pose when talking to others:
 
@@ -32,6 +32,7 @@ Here are some questions to pose when talking to others:
 * Has anything like this been done in the past? How did it go?
 * Who else do you think would be good to run this past?
 
+Note: if this step is not going well, it might be time to quit or it might be time to do a quick cheap prototype/experiment.
 
 ## Phase 3: Refine
 
