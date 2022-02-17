@@ -89,7 +89,7 @@ export default function Home({ allPostsData }) {
               and habits I'm currently making and breaking.
             </p>
             <p>
-              I also co-host <a href="https://anchor.fm/dashboard">a podcast</a>{' '}
+              I also co-host <a target="_blank" href="https://anchor.fm/lollygag">a podcast</a>{' '}
               with the great Raphael Rafatpanah about all things programming.
             </p>
           </section>
