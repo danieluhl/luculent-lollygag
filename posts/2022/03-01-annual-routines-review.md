@@ -6,7 +6,7 @@ date: '2022-03-01'
 ## 2022
 
 | Time  | Activity                               |
-| ----- | -------------------------------------- |
+| :---- | :------------------------------------- |
 | 5-6am | Read / homework / blog                 |
 | 7am   | Wake up Reyan                          |
 | 8am   | Drive Reyan to school                  |
@@ -21,7 +21,7 @@ date: '2022-03-01'
 ### Weekly
 
 | Day      | Activity                                                       |
-| -------- | -------------------------------------------------------------- |
+| :------- | :------------------------------------------------------------- |
 | Friday   | Podcast                                                        |
 | Saturday | Isolated learning time, personal growth                        |
 | Sunday   | Dedicated family time, relaxation, work prep for the next week |
@@ -29,7 +29,7 @@ date: '2022-03-01'
 ### Tools
 
 | Category  | Tool                                                     |
-| --------- | -------------------------------------------------------- |
+| :-------- | :------------------------------------------------------- |
 | Todo      | [Things3](https://culturedcode.com/things/)              |
 | Terminal  | [Warp](https://www.warp.dev/)                            |
 | Coding    | [VSCode (with vim)](https://code.visualstudio.com/)      |
