@@ -5,6 +5,14 @@ date: '2022-03-01'
 
 ## 2022
 
+
+| Branch  | Commit           |
+| ------- | ---------------- |
+| main    | 0123456789abcdef |
+| staging | fedcba9876543210 |
+
+
+
 | Time  | Activity                               |
 | :---- | :------------------------------------- |
 | 5-6am | Read / homework / blog                 |
@@ -17,6 +25,7 @@ date: '2022-03-01'
 | 4     | 30pm: Family time                      |
 | 7     | 00pm: Leisure time (games and youtube) |
 | 8     | 30pm: Bed time                         |
+
 
 ### Weekly
 
