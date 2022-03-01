@@ -5,8 +5,16 @@ date: '2022-03-01'
 
 ## 2022
 
+
+| Branch  | Commit           |
+| ------- | ---------------- |
+| main    | 0123456789abcdef |
+| staging | fedcba9876543210 |
+
+
+
 | Time  | Activity                               |
-| ----- | -------------------------------------- |
+| :---- | :------------------------------------- |
 | 5-6am | Read / homework / blog                 |
 | 7am   | Wake up Reyan                          |
 | 8am   | Drive Reyan to school                  |
@@ -18,10 +26,11 @@ date: '2022-03-01'
 | 7     | 00pm: Leisure time (games and youtube) |
 | 8     | 30pm: Bed time                         |
 
+
 ### Weekly
 
 | Day      | Activity                                                       |
-| -------- | -------------------------------------------------------------- |
+| :------- | :------------------------------------------------------------- |
 | Friday   | Podcast                                                        |
 | Saturday | Isolated learning time, personal growth                        |
 | Sunday   | Dedicated family time, relaxation, work prep for the next week |
@@ -29,7 +38,7 @@ date: '2022-03-01'
 ### Tools
 
 | Category  | Tool                                                     |
-| --------- | -------------------------------------------------------- |
+| :-------- | :------------------------------------------------------- |
 | Todo      | [Things3](https://culturedcode.com/things/)              |
 | Terminal  | [Warp](https://www.warp.dev/)                            |
 | Coding    | [VSCode (with vim)](https://code.visualstudio.com/)      |
