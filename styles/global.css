@@ -31,3 +31,17 @@ img {
   max-width: 100%;
   display: block;
 }
+
+table {
+  width: 760px;
+}
+
+table th {
+  padding: 6px 16px;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+table td {
+  padding: 6px 16px;
+}
