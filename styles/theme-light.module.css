@@ -27,3 +27,8 @@
   color: #011627;
   cursor: default;
 }
+
+.themeWrapper table th {
+  background: rgba(76, 94, 201, 0.08);
+  border-left: 4px solid rgba(76, 94, 201, 0.08);
+}

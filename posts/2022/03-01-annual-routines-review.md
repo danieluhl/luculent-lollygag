@@ -5,27 +5,18 @@ date: '2022-03-01'
 
 ## 2022
 
-
-| Branch  | Commit           |
-| ------- | ---------------- |
-| main    | 0123456789abcdef |
-| staging | fedcba9876543210 |
-
-
-
-| Time  | Activity                               |
-| :---- | :------------------------------------- |
-| 5-6am | Read / homework / blog                 |
-| 7am   | Wake up Reyan                          |
-| 8am   | Drive Reyan to school                  |
-| 8     | 20am: 20 minute cardio workout, shower |
-| 8     | 45am: 10 minute mindfulness            |
-| 9     | 00am: Start work around                |
-| 11    | 30am: Walk the dog for lunch           |
-| 4     | 30pm: Family time                      |
-| 7     | 00pm: Leisure time (games and youtube) |
-| 8     | 30pm: Bed time                         |
-
+| Time    | Activity                         |
+| :------ | :------------------------------- |
+| 5-6am   | Read / homework / blog           |
+| 7am     | Wake up Reyan                    |
+| 8am     | Drive Reyan to school            |
+| 8:20am  | 20 minute cardio workout, shower |
+| 8:45am  | 10 minute mindfulness            |
+| 9:00am  | Start work around                |
+| 11:30am | Walk the dog for lunch           |
+| 4:30pm  | Family time                      |
+| 7:00pm  | Leisure time (games and youtube) |
+| 8:30pm  | Bed time                         |
 
 ### Weekly
 

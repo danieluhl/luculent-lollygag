@@ -7,7 +7,7 @@
   text-decoration: underline;
 }
 
-.themeWrapper{
+.themeWrapper {
   background: #011627;
   color: #d6deeb;
   padding: 20px 0;
@@ -26,4 +26,9 @@
 .themeWrapper .activeTabHeading {
   color: #d6deeb;
   cursor: default;
+}
+
+.themeWrapper table th {
+  background: rgba(76, 94, 201, 0.08);
+  border-left: 4px solid rgba(76, 94, 201, 0.08);
 }
