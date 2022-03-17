@@ -12,7 +12,7 @@ date: '2022-03-01'
 | 8am     | Drive Reyan to school            |
 | 8:20am  | 20 minute cardio workout, shower |
 | 8:45am  | 10 minute mindfulness            |
-| 9:00am  | Start work around                |
+| 9:00am  | Start work                       |
 | 11:30am | Walk the dog for lunch           |
 | 4:30pm  | Family time                      |
 | 7:00pm  | Leisure time (games and youtube) |
