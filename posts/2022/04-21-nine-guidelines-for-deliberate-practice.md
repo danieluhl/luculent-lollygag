@@ -7,8 +7,8 @@ date: '2022-04-21'
 2. Get a coach (or automated) for corrective inputs
 3. Be enthusiastic about learning (not arriving at a goal)
 4. Breakdown the skill and take one piece at a time
-5. Have a beginner mindset (curiousity)
-6. Follow the prescirbed patter _exactly_ first
+5. Have a beginner mindset (curiosity)
+6. Follow the prescribed patter _exactly_ first
 7. Practice a little every day
 8. Practice on something real
 9. Practice at the edge of your capability
