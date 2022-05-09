@@ -3,7 +3,11 @@ title: 'About Habit Disruptors'
 date: '2021-04-29'
 ---
 
-There are a ton of materials on forming habits (trigger, routine, reward) but equally important are habit disruptors. These break up your day and help to get perspective on where your time is going and true value of your activities. We have many [biases](https://yourbias.is/) that can color our perception.
+
+There are a ton of materials on forming habits (trigger, routine, reward) but
+equally important are habit disruptors. These break up your day and help to get
+perspective on where your time is going and true value of your activities. We
+have many [biases](https://yourbias.is/) that can color our perception.
 
 ## Pick a Habit
 
