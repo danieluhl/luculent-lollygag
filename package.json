@@ -19,7 +19,7 @@
     "date-fns": "^2.21.1",
     "fast-glob": "^3.2.5",
     "gray-matter": "^4.0.3",
-    "next": "^12",
+    "next": "latest",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.4.1",
     "react": "^17.0.2",

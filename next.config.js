@@ -1,6 +1,3 @@
-// module.exports = {
-//   experimental: {
-//     urlImports: ['https://cdn.skypack.dev'],
-//     esmExternals: true
-//   },
-// };
+module.exports = {
+  output: 'standalone',
+}
