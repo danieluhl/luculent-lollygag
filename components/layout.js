@@ -8,8 +8,8 @@ import Link from 'next/link';
 import Toggle from './toggle';
 import { useState, useEffect } from 'react';
 
-const name = "Luculent Lollygag";
-export const siteTitle = "Reyan Blog";
+const name = 'Luculent Lollygag';
+export const siteTitle = 'Reyan Blog';
 
 const THEMES = {
   DARK: 'dark',
@@ -65,7 +65,7 @@ export default function Layout({ children, home }) {
             <>
               <Image
                 priority
-                src="/images/flowers.jpg"
+                src="/images/reyan.png"
                 className={utilStyles.borderCircle}
                 height={300}
                 width={300}
@@ -96,7 +96,7 @@ export default function Layout({ children, home }) {
             </>
           )}
         </header>
-        <main>{children({ theme: themeStyles})}</main>
+        <main>{children({ theme: themeStyles })}</main>
         {!home && (
           <div className={styles.backToHome}>
             <Link href="/">
