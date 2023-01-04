@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><link rel="icon" href="/favicon.ico"/><meta name="description" content="Blog about software engineering, management, and other interesting thoughts"/><meta name="og:title" content="Reyan Blog"/><link rel="preload" as="image" imagesrcset="/_next/image?url=%2Fimages%2Fscene.jpeg&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2Fscene.jpeg&amp;w=256&amp;q=75 2x"/><title>My First Chrome Plugin</title><meta name="next-head-count" content="7"/><link rel="preload" href="/_next/static/css/ec97798b16123a88.css" as="style"/><link rel="stylesheet" href="/_next/static/css/ec97798b16123a88.css" data-n-g=""/><link rel="preload" href="/_next/static/css/ca2a5f0cc0e0175b.css" as="style"/><link rel="stylesheet" href="/_next/static/css/ca2a5f0cc0e0175b.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-d7b038a63b619762.js" defer=""></script><script src="/_next/static/chunks/framework-5f4595e5518b5600.js" defer=""></script><script src="/_next/static/chunks/main-1038209226d7adb4.js" defer=""></script><script src="/_next/static/chunks/pages/_app-67d2bc72b78694d0.js" defer=""></script><script src="/_next/static/chunks/78-bdfdf4d064184fb9.js" defer=""></script><script src="/_next/static/chunks/688-564d5ce4fce97f19.js" defer=""></script><script src="/_next/static/chunks/pages/%5Bid%5D-01cab840522437f1.js" defer=""></script><script src="/_next/static/uzSFrkBCaZp2MnXn1GAEW/_buildManifest.js" defer=""></script><script src="/_next/static/uzSFrkBCaZp2MnXn1GAEW/_ssgManifest.js" defer=""></script></head><body><div id="__next" data-reactroot=""><div class="theme-light_themeWrapper__bvKnI"><div class="layout_container__fbLkO"><div class="toggle_toggle__dvuTg"><div class="toggle_toggleContainer__K3RPH"><div class="toggle_toggleCheck__xUj3r"><span>🌜</span></div><div class="toggle_toggleUncheck__VtG_u"><span>🌞</span></div></div><div class="toggle_toggleCircle__42TBJ"></div><input type="checkbox" aria-label="Toggle Button" class="toggle_toggleInput___RU7f"/></div><header class="layout_header__kY0Lt"><a href="/"><span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27108%27%20height=%27108%27/%3e"/></span><img alt="Luculent Lollygag" srcSet="/_next/image?url=%2Fimages%2Fscene.jpeg&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2Fscene.jpeg&amp;w=256&amp;q=75 2x" src="/_next/image?url=%2Fimages%2Fscene.jpeg&amp;w=256&amp;q=75" decoding="async" data-nimg="intrinsic" class="utils_borderCircle__s2nTm" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/></span></a><h2 class="utils_headingLg__5535D"><a class="utils_colorInherit__mSH_x" href="/">Luculent Lollygag</a></h2></header><main><article><h1 class="utils_headingXl__u25Y2">My First Chrome Plugin</h1><div class="utils_lightText__eUzGY"><time dateTime="2021-04-29">29 Apr 2021</time></div><div><h1>My First Chrome Plugin</h1>
+<p>It was much faster than I thought it would be.</p>
+<h2>Generate the Project</h2>
+<p>I used <a href="https://yeoman.io/">Yeoman</a> to generate the scaffolding. Make a project folder and run:</p>
+<pre><code>npm install -g yo generator-web-extension
+yo web-extension
+</code></pre>
+<p>Lots of options but I'd go with the minimum for now. One thing I did include was a button in the extension.</p>
+<p>Then go to your <a href="chrome://extensions/">chrome extensions</a> and click "Load Unpacked". Find the <code>dist</code> directory that was generated and you should have your dev extension in chrome ready to go. Click the puzzle piece in the extensions area and pin your extension.</p>
+<p>Now we can fire up the watcher and start coding while getting a live refresh:</p>
+<pre><code>npm run dev chrome
+</code></pre>
+<h2>Code Structure</h2>
+<p>There's a little popup when you click the extension. Think of this as it's own separate web page. In fact, you can right-click the extension and "inspect" just like it's a web page. This is where you'll see any <code>console.log</code> for the extension bits.</p>
+<p>We'll be injecting a super simple timer onto the page. To do this the extension needs to send a message to the page.</p>
+<p>Go to <code>app/pages/popup.html</code> and add a button with class <code>timerButton</code>.</p>
+<p>Now look in <code>/app/scripts</code> and you'll see three files, two we'll be touching are:</p>
+<p><code>popup.js</code>: this is for code that runs inside the extension "page"</p>
+<p><code>contentscript.js</code>: this is for code that runs in the page the user is currently on</p>
+<p>So we need to send a message from <code>popup.js</code> to <code>contentscript.js</code> to trigger injection of a timer on the page.</p>
+<p><code>popup.js</code>:</p>
+<pre><code>document.querySelector('.timerButton').addEventListener('click', addTimer);
+function addTimer() {
+  browser.tabs
+    .query({
+      active: true,
+      currentWindow: true,
+    })
+    .then(tabs => {
+      browser.tabs
+        .sendMessage(tabs[0].id, {
+          timerMessage: `create`,
+        })
+        .then(response => {
+          console.log({response});
+        })
+        .catch(({message}) => console.error('error', message));
+    });
+}
+
+</code></pre>
+<p>Once we hit the page we'll do all the timer stuff including injecting some html on the page that has some hacky draggability:</p>
+<pre><code>const SECOND = 1000;
+const MINUTE = SECOND * 60;
+class Timer {
+  timerHtmlHandle;
+  timerInterval;
+  originalTime;
+  currentTime;
+  startTimer() {
+    this.timerInterval = setInterval(this.tick.bind(this), SECOND);
+  }
+  stopTimer() {
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+  }
+  toggleTimer() {
+    this.timerInterval ? this.stopTimer() : this.startTimer();
+  }
+  resetTimer(seedTime = prompt('Enter Timer Minutes') * MINUTE) {
+    this.stopTimer();
+    this.currentTime = this.originalTime = seedTime;
+    this.tick();
+  }
+  refreshTimer() {
+    this.stopTimer();
+    this.currentTime = this.originalTime;
+    this.tick();
+  }
+  addMinute() {
+    this.currentTime = this.currentTime + MINUTE;
+    this.tick();
+  }
+  tick() {
+    const timerText = `${Math.floor(this.currentTime / MINUTE)}:${`${
+      (this.currentTime % MINUTE) / SECOND
+    }`.padStart(2, '0')}`;
+
+    this.timerHtmlHandle.innerText = timerText;
+    this.currentTime = this.currentTime - SECOND;
+
+    if (this.currentTime &#x3C; 0) {
+      this.stopTimer();
+    } else if (this.currentTime &#x3C; MINUTE * 2) {
+      // two minute warning
+      this.timerHtmlHandle.style.color = '#f5b20a';
+    } else if (this.currentTime &#x3C; MINUTE) {
+      // one minute warning
+      this.timerHtmlHandle.style.color = '#da521f';
+    }
+  }
+}
+const duhlTimer = new Timer();
+
+const addTimer = () => {
+  const timerHtml = `
+    &#x3C;div draggable="true" class="duhl-timer">
+      &#x3C;div class="drag">&#x3C;/div>
+      &#x3C;div class="ext-timer">0:00&#x3C;/div>
+      &#x3C;button class="refreshTimer">🔂&#x3C;/button>
+      &#x3C;button class="addMinute">1️⃣&#x3C;/button>
+      &#x3C;button class="resetTimer">🆕&#x3C;/button>
+      &#x3C;button class="toggleTimer">⏯&#x3C;/button>
+    &#x3C;/div>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', timerHtml);
+  duhlTimer.timerHtmlHandle = document.querySelector('.ext-timer');
+  document
+    .querySelector('.duhl-timer .refreshTimer')
+    .addEventListener('click', () => duhlTimer.refreshTimer());
+  document
+    .querySelector('.duhl-timer .addMinute')
+    .addEventListener('click', () => duhlTimer.addMinute());
+  document
+    .querySelector('.duhl-timer .resetTimer')
+    .addEventListener('click', () => duhlTimer.resetTimer());
+  document
+    .querySelector('.duhl-timer .toggleTimer')
+    .addEventListener('click', () => duhlTimer.toggleTimer());
+  document.querySelector('.duhl-timer').addEventListener('dragend', e => {
+    console.log(e);
+    e.target.style.top = `${e.pageY}px`;
+    e.target.style.left = `${e.pageX}px`;
+  });
+};
+
+browser.runtime.onMessage.addListener((req, sender, sendResponse) => {
+  // only one timer for you!
+  if (duhlTimer &#x26;&#x26; duhlTimer.timerHtmlHandle) {
+    return;
+  }
+  addTimer();
+  // reflow before starting things or it gets wonky
+  setTimeout(() => {
+    duhlTimer.resetTimer(5 * MINUTE);
+  });
+});
+
+</code></pre>
+<p>Finally the related <code>contentscript.css</code></p>
+<pre><code>.duhl-timer {
+  padding: 0 4px;
+  position: absolute;
+  z-index: 10000000;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #fff;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.duhl-timer .drag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 12px 0 2px 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #666,
+    #666 2px,
+    #333 2px,
+    #333 4px
+  );
+  cursor: move;
+}
+
+.duhl-timer .ext-timer {
+  font-size: 3rem;
+  line-height: 3rem;
+  text-align: center;
+}
+
+.duhl-timer button {
+  padding: 2px 6px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+}
+
+.duhl-timer button:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+.duhl-timer button:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+</code></pre>
+<p>And that's my timer injection plugin!</p>
+<p>[src](<a href="https://github.com/danieluhl/timer-chrome-">https://github.com/danieluhl/timer-chrome-</a></p></div></article><button style="font-size:1.4em;background:none;border:none;cursor:pointer">👍</button></main><div class="layout_backToHome__9sjx_"><a href="/">← Back to home</a></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"04-29-my-first-chrome-plugin","contentHtml":"\u003ch1\u003eMy First Chrome Plugin\u003c/h1\u003e\n\u003cp\u003eIt was much faster than I thought it would be.\u003c/p\u003e\n\u003ch2\u003eGenerate the Project\u003c/h2\u003e\n\u003cp\u003eI used \u003ca href=\"https://yeoman.io/\"\u003eYeoman\u003c/a\u003e to generate the scaffolding. Make a project folder and run:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003enpm install -g yo generator-web-extension\nyo web-extension\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eLots of options but I'd go with the minimum for now. One thing I did include was a button in the extension.\u003c/p\u003e\n\u003cp\u003eThen go to your \u003ca href=\"chrome://extensions/\"\u003echrome extensions\u003c/a\u003e and click \"Load Unpacked\". Find the \u003ccode\u003edist\u003c/code\u003e directory that was generated and you should have your dev extension in chrome ready to go. Click the puzzle piece in the extensions area and pin your extension.\u003c/p\u003e\n\u003cp\u003eNow we can fire up the watcher and start coding while getting a live refresh:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003enpm run dev chrome\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003eCode Structure\u003c/h2\u003e\n\u003cp\u003eThere's a little popup when you click the extension. Think of this as it's own separate web page. In fact, you can right-click the extension and \"inspect\" just like it's a web page. This is where you'll see any \u003ccode\u003econsole.log\u003c/code\u003e for the extension bits.\u003c/p\u003e\n\u003cp\u003eWe'll be injecting a super simple timer onto the page. To do this the extension needs to send a message to the page.\u003c/p\u003e\n\u003cp\u003eGo to \u003ccode\u003eapp/pages/popup.html\u003c/code\u003e and add a button with class \u003ccode\u003etimerButton\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eNow look in \u003ccode\u003e/app/scripts\u003c/code\u003e and you'll see three files, two we'll be touching are:\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003epopup.js\u003c/code\u003e: this is for code that runs inside the extension \"page\"\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003econtentscript.js\u003c/code\u003e: this is for code that runs in the page the user is currently on\u003c/p\u003e\n\u003cp\u003eSo we need to send a message from \u003ccode\u003epopup.js\u003c/code\u003e to \u003ccode\u003econtentscript.js\u003c/code\u003e to trigger injection of a timer on the page.\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003epopup.js\u003c/code\u003e:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edocument.querySelector('.timerButton').addEventListener('click', addTimer);\nfunction addTimer() {\n  browser.tabs\n    .query({\n      active: true,\n      currentWindow: true,\n    })\n    .then(tabs =\u003e {\n      browser.tabs\n        .sendMessage(tabs[0].id, {\n          timerMessage: `create`,\n        })\n        .then(response =\u003e {\n          console.log({response});\n        })\n        .catch(({message}) =\u003e console.error('error', message));\n    });\n}\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eOnce we hit the page we'll do all the timer stuff including injecting some html on the page that has some hacky draggability:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003econst SECOND = 1000;\nconst MINUTE = SECOND * 60;\nclass Timer {\n  timerHtmlHandle;\n  timerInterval;\n  originalTime;\n  currentTime;\n  startTimer() {\n    this.timerInterval = setInterval(this.tick.bind(this), SECOND);\n  }\n  stopTimer() {\n    clearInterval(this.timerInterval);\n    this.timerInterval = null;\n  }\n  toggleTimer() {\n    this.timerInterval ? this.stopTimer() : this.startTimer();\n  }\n  resetTimer(seedTime = prompt('Enter Timer Minutes') * MINUTE) {\n    this.stopTimer();\n    this.currentTime = this.originalTime = seedTime;\n    this.tick();\n  }\n  refreshTimer() {\n    this.stopTimer();\n    this.currentTime = this.originalTime;\n    this.tick();\n  }\n  addMinute() {\n    this.currentTime = this.currentTime + MINUTE;\n    this.tick();\n  }\n  tick() {\n    const timerText = `${Math.floor(this.currentTime / MINUTE)}:${`${\n      (this.currentTime % MINUTE) / SECOND\n    }`.padStart(2, '0')}`;\n\n    this.timerHtmlHandle.innerText = timerText;\n    this.currentTime = this.currentTime - SECOND;\n\n    if (this.currentTime \u0026#x3C; 0) {\n      this.stopTimer();\n    } else if (this.currentTime \u0026#x3C; MINUTE * 2) {\n      // two minute warning\n      this.timerHtmlHandle.style.color = '#f5b20a';\n    } else if (this.currentTime \u0026#x3C; MINUTE) {\n      // one minute warning\n      this.timerHtmlHandle.style.color = '#da521f';\n    }\n  }\n}\nconst duhlTimer = new Timer();\n\nconst addTimer = () =\u003e {\n  const timerHtml = `\n    \u0026#x3C;div draggable=\"true\" class=\"duhl-timer\"\u003e\n      \u0026#x3C;div class=\"drag\"\u003e\u0026#x3C;/div\u003e\n      \u0026#x3C;div class=\"ext-timer\"\u003e0:00\u0026#x3C;/div\u003e\n      \u0026#x3C;button class=\"refreshTimer\"\u003e🔂\u0026#x3C;/button\u003e\n      \u0026#x3C;button class=\"addMinute\"\u003e1️⃣\u0026#x3C;/button\u003e\n      \u0026#x3C;button class=\"resetTimer\"\u003e🆕\u0026#x3C;/button\u003e\n      \u0026#x3C;button class=\"toggleTimer\"\u003e⏯\u0026#x3C;/button\u003e\n    \u0026#x3C;/div\u003e\n  `;\n  document.body.insertAdjacentHTML('afterbegin', timerHtml);\n  duhlTimer.timerHtmlHandle = document.querySelector('.ext-timer');\n  document\n    .querySelector('.duhl-timer .refreshTimer')\n    .addEventListener('click', () =\u003e duhlTimer.refreshTimer());\n  document\n    .querySelector('.duhl-timer .addMinute')\n    .addEventListener('click', () =\u003e duhlTimer.addMinute());\n  document\n    .querySelector('.duhl-timer .resetTimer')\n    .addEventListener('click', () =\u003e duhlTimer.resetTimer());\n  document\n    .querySelector('.duhl-timer .toggleTimer')\n    .addEventListener('click', () =\u003e duhlTimer.toggleTimer());\n  document.querySelector('.duhl-timer').addEventListener('dragend', e =\u003e {\n    console.log(e);\n    e.target.style.top = `${e.pageY}px`;\n    e.target.style.left = `${e.pageX}px`;\n  });\n};\n\nbrowser.runtime.onMessage.addListener((req, sender, sendResponse) =\u003e {\n  // only one timer for you!\n  if (duhlTimer \u0026#x26;\u0026#x26; duhlTimer.timerHtmlHandle) {\n    return;\n  }\n  addTimer();\n  // reflow before starting things or it gets wonky\n  setTimeout(() =\u003e {\n    duhlTimer.resetTimer(5 * MINUTE);\n  });\n});\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eFinally the related \u003ccode\u003econtentscript.css\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e.duhl-timer {\n  padding: 0 4px;\n  position: absolute;\n  z-index: 10000000;\n  top: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.8);\n  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);\n  border: 1px solid #fff;\n  border-radius: 12px;\n  color: #fff;\n}\n\n.duhl-timer .drag {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 16px;\n  height: 16px;\n  border-radius: 12px 0 2px 0;\n  background: repeating-linear-gradient(\n    to bottom,\n    #666,\n    #666 2px,\n    #333 2px,\n    #333 4px\n  );\n  cursor: move;\n}\n\n.duhl-timer .ext-timer {\n  font-size: 3rem;\n  line-height: 3rem;\n  text-align: center;\n}\n\n.duhl-timer button {\n  padding: 2px 6px;\n  border: none;\n  background: none;\n  border-radius: 4px;\n}\n\n.duhl-timer button:hover {\n  cursor: pointer;\n  background: rgba(255, 255, 255, 0.1);\n}\n.duhl-timer button:active {\n  background: rgba(255, 255, 255, 0.2);\n}\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eAnd that's my timer injection plugin!\u003c/p\u003e\n\u003cp\u003e[src](\u003ca href=\"https://github.com/danieluhl/timer-chrome-\"\u003ehttps://github.com/danieluhl/timer-chrome-\u003c/a\u003e\u003c/p\u003e","title":"My First Chrome Plugin","date":"2021-04-29"}},"__N_SSG":true},"page":"/[id]","query":{"id":"04-29-my-first-chrome-plugin"},"buildId":"uzSFrkBCaZp2MnXn1GAEW","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>

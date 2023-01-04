@@ -10,7 +10,8 @@
 /coverage
 
 # next.js
-/.next/
+# not sure why I need to commit this
+# /.next/
 /out/
 
 # production
