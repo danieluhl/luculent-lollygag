@@ -84,14 +84,24 @@ export default function Home({ allPostsData }) {
           </Head>
           <section className={utilStyles.headingMd}>
             <p>
+              NOTE: I'm actively looking for a the next big opportunity! If you
+              know an open position where I can both teach and learn, please
+              reach out! email: danielruhl@gmail.com
+            </p>
+            <p>
               Here you'll find thoughts on JavaScript development, management,
               stoic philosophy as well as some ongoing lists like things I like
               and habits I'm currently making and breaking.
             </p>
-            <p>
-              I also co-host <a target="_blank" href="https://anchor.fm/lollygag">a podcast</a>{' '}
-              with the great Raphael Rafatpanah about all things programming.
-            </p>
+            <ul>
+              <li>
+                Co-host of{' '}
+                <a href="https://anchor.fm/lollygag">Luculent Lollygag</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/danieluhl/">LinkedIn</a>
+              </li>
+            </ul>
           </section>
           <section
             className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}
@@ -100,9 +110,8 @@ export default function Home({ allPostsData }) {
               {Object.values(TABS).map((tab) => (
                 <h2
                   key={tab}
-                  className={`${utilStyles.headingLg} ${theme.tabHeading} ${
-                    activeTab === tab ? theme.activeTabHeading : ''
-                  }`}
+                  className={`${utilStyles.headingLg} ${theme.tabHeading} ${activeTab === tab ? theme.activeTabHeading : ''
+                    }`}
                   onClick={onHeadingClick(tab)}
                 >
                   {tab}
@@ -137,9 +146,8 @@ export default function Home({ allPostsData }) {
                       {tags.map((tag) => (
                         <small key={tag}>
                           <a
-                            className={`${
-                              tag === selectedTag ? utilStyles.selectedTag : ''
-                            } ${utilStyles.tag} ${utilStyles.lightText}`}
+                            className={`${tag === selectedTag ? utilStyles.selectedTag : ''
+                              } ${utilStyles.tag} ${utilStyles.lightText}`}
                             onClick={makeTagFilterCallback(tag)}
                             data-value={tag}
                           >
