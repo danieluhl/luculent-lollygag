@@ -11,7 +11,7 @@
 
 # next.js
 # not sure why I need to commit this
-# /.next/
+/.next/
 /out/
 
 # production
